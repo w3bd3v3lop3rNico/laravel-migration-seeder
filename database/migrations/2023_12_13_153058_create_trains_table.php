@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trains', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->string('company', 60);
             $table->string('train_station_start');
             $table->string('train_station_last');
-            $table->string('departure', 5)->nullable();
-            $table->string('arrival', 5)->nullable();
-            $table->string('train_code', 12);
-            $table->tinyInteger('wagons_number');
-            $table->boolean('on_time');
-            $table->boolean('deleted');
+            $table->dateTime('departure');
+            $table->dateTime('arrival');
+            $table->string('train_code', 12)->default('abc1234cdtrd');
+            $table->tinyInteger('wagons_number')->nullable($value = true);
+            $table->boolean('on_time')->default(true);
+            $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
     }
