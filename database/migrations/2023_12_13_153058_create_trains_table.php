@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('train_station_last');
             $table->dateTime('departure');
             $table->dateTime('arrival');
-            $table->string('train_code', 12)->default('abc1234cdtrd');
-            $table->tinyInteger('wagons_number')->nullable($value = true);
+            $table->string('train_code', 12)->default('xxx####xxxxx');
+            // colonna wagons meglio farla unsigned perchè non vogliamo accettare valori negativi
+            $table->tinyInteger('wagons_number')->unsigned();
             $table->boolean('on_time')->default(true);
             $table->boolean('deleted')->default(false);
             $table->timestamps();
